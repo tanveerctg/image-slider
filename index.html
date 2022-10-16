@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<style>
+			.slidecontainer {
+				width: 100%;
+				margin: 20px 0;
+			}
+
+			.slider {
+				-webkit-appearance: none;
+				width: 100%;
+				height: 10px;
+				background: #d3d3d3;
+				outline: none;
+				opacity: 0.7;
+				-webkit-transition: 0.2s;
+				transition: opacity 0.2s;
+			}
+
+			.slider:hover {
+				opacity: 1;
+			}
+
+			.slider::-webkit-slider-thumb {
+				-webkit-appearance: none;
+				appearance: none;
+				width: 160px;
+				height: 20px;
+				background: #006cac;
+				cursor: pointer;
+			}
+
+			.slider::-moz-range-thumb {
+				width: 25px;
+				height: 25px;
+				background: #006cac;
+				cursor: pointer;
+			}
+			.slide-track {
+				display: flex;
+				width: calc(200px * 10);
+			}
+			.slide {
+				height: 400px;
+				width: 200px;
+				display: flex;
+				align-items: center;
+			}
+			.slide img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="slidecontainer">
+			<input type="range" min="1" max="100" value="0" class="slider" />
+		</div>
+
+		<div style="width: 1000px; margin: 0 auto; overflow: hidden; display: flex">
+			<div class="slide-track">
+				<div class="slide">
+					<img src="1.jpg" />
+				</div>
+				<div class="slide">
+					<img src="2.jpg" />
+				</div>
+				<div class="slide">
+					<img src="3.jpg" />
+				</div>
+				<div class="slide">
+					<img src="4.jpg" />
+				</div>
+				<div class="slide">
+					<img src="5.jpg" />
+				</div>
+				<div class="slide">
+					<img src="6.jpg" />
+				</div>
+				<div class="slide">
+					<img src="7.jpg" />
+				</div>
+				<div class="slide">
+					<img src="8.jpg" />
+				</div>
+				<div class="slide">
+					<img src="9.jpg" />
+				</div>
+				<div class="slide">
+					<img src="10.jpg" />
+				</div>
+			</div>
+		</div>
+
+		<script>
+			const slider = document.querySelector(".slider")
+			const slideTrack = document.querySelector(".slide-track")
+
+			const totalImage = 10
+			const imgWidth = 200
+
+			const slideTrackWidth = 10 * 200
+			const halfTrackWidth = slideTrackWidth / 2
+			const imgMoveByOneUnit = halfTrackWidth / 100
+
+			console.log({ imgMoveByOneUnit })
+
+			slider.addEventListener("change", (e) => {
+				console.log(e.target.value * 10)
+				slideTrack.style.transform = `translateX(-${
+					e.target.value * imgMoveByOneUnit
+				}px)`
+			})
+		</script>
+	</body>
+</html>
